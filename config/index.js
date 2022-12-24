@@ -16,6 +16,12 @@ const config = {
     options: {},
   },
   framework: "react",
+  compiler: {
+    type: 'webpack5',
+    prebundle: {
+      exclude: ['ossaui']
+    }
+  },
   mini: {
     postcss: {
       pxtransform: {
