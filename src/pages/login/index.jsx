@@ -1,12 +1,14 @@
 import Taro from "@tarojs/taro";
 import { useEffect, useState } from "react";
 import { Form, View } from "@tarojs/components";
+import { useTranslation } from "react-i18next";
 import { OsInput, OsButton, OsToast } from "ossaui";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken, setUser } from "../../redux/actions/LoginInfo";
 import "./index.scss";
 
 const Login = () => {
+  const { t } = useTranslation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
@@ -27,6 +29,9 @@ const Login = () => {
   };
 
   useEffect(() => {
+    Taro.setNavigationBarTitle({
+      title: t("main:login")
+    });
     if (user && token) {
       Taro.redirectTo({
         url: "/pages/index/index"
@@ -41,7 +46,7 @@ const Login = () => {
           <View className="login-input">
             <OsInput
               name="username"
-              placeholder="请输入账户名称"
+              placeholder={t("main:plUsername")}
               value={username}
               onChange={v => setUsername(v)}
             ></OsInput>
@@ -50,19 +55,19 @@ const Login = () => {
               name="password"
               type="password"
               value={password}
-              placeholder="请输入密码"
+              placeholder={t("main:plPassword")}
               onChange={v => setPassword(v)}
             ></OsInput>
           </View>
           <View className="login-button">
             <OsButton type="primary" shape="round" formType="submit">
-              登录
+              {t("main:login")}
             </OsButton>
           </View>
         </Form>
         <OsToast
           isShow={show}
-          text="用户名或密码不能为空"
+          text={t("main:notEmpty")}
           onClose={() => setShow(false)}
         ></OsToast>
       </View>

@@ -1,4 +1,3 @@
 export default {
-  navigationBarTitleText: 'login',
-  enableShareAppMessage: true,
+  enableShareAppMessage: true
 };

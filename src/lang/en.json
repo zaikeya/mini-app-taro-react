@@ -1,0 +1,10 @@
+{
+    "main":{
+        "login":"login",
+        "plUsername":"Please enter your username",
+        "plPassword":"Please enter your password",
+        "notEmpty":"username or password can not be empty!",
+        "home":"home",
+        "mine":"mine"
+    }
+}
