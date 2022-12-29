@@ -1,4 +1,4 @@
-# mini-app-taro-react 
+# mini-app taro-react 
 
 pull project
 yarn 
