@@ -1,4 +1,5 @@
 # mini-app taro-react 
+taro-hooks、ossa、redux、i18n
 
 ## 可以 watch 这个项目，有更新，及时知道
 
