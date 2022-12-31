@@ -4,6 +4,7 @@ import { Form, View } from "@tarojs/components";
 import { useTranslation } from "react-i18next";
 import { OsInput, OsButton, OsToast } from "ossaui";
 import { useDispatch, useSelector } from "react-redux";
+import httpRequest from "../../http/http";
 import { setToken, setUser } from "../../redux/actions/LoginInfo";
 import "./index.scss";
 
@@ -15,12 +16,19 @@ const Login = () => {
   const user = useSelector(state => state.LoginInfo.user);
   const token = useSelector(state => state.LoginInfo.token);
   const dispatch = useDispatch();
-  const formSubmit = value => {
+  const formSubmit = async value => {
     if (username === "" || password === "") {
       setShow(true);
       return;
     }
-    console.log("=======>value", value);
+
+    const data = {
+      username,
+      password
+    };
+
+    const res = await httpRequest.post("/login", data);
+
     dispatch(setUser(username));
     dispatch(setToken(password));
     Taro.redirectTo({
